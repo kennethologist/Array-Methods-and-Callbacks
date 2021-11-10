@@ -94,7 +94,17 @@ hint: the strings returned need to exactly match the string in step 4.
  */
 
 function getWinnersByYear(array, cbGetFinals, cbGetYears, cbGetWinners) {
-    
+    const finals = cbGetFinals(fifaData);
+   
+    const winnersByYear = finals.map(item => {
+        if (item["Home Team Goals"] > item["Away Team Goals"] ) {
+            return `In ${item["Year"]}, ${item["Home Team Name"]} won the world cup!`;
+        } else {
+            return `In ${item["Year"]}, ${item["Away Team Name"]} won the world cup!`;
+        }
+    })
+
+    return winnersByYear;
 }
 
 
